@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-public class Controller {
+public class OrderController {
 
     // RestTemplate 是由SpringBoot Web组件提供 默认整合ribbon负载均衡器
     // rest方式底层采用httpclient技术
@@ -20,7 +20,7 @@ public class Controller {
     //订单服务调用会员服务
     @RequestMapping("/getOrder")
     public String getOrder() {
-        String url = "http://192.168.0.107:8000/getMember";
+        String url = "http://member/getMember";
         // 有俩种方式，一种是采用服务别名方式调用，另一种是直接调用
         String result = restTemplate.getForObject(url, String.class);
         System.out.println("订单服务调用会员服务结果：" + result);
